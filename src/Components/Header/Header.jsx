@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Header({ isActiveModal }) {
     const { t, i18n } = useTranslation();
+    const [activeHeaderModal, setActiveHeaderModal] = useState(false)
     const [currentTime, setCurrentTime] = useState('');
     const [openMenu, setOpenMenu] = useState(null);
     const [data, setData] = useState([])
@@ -114,7 +115,7 @@ export default function Header({ isActiveModal }) {
         };
     }, []);
     return (
-        <header className='Header text-[white] relative z-50'>
+        <header className='Header text-[white] relative z-50 '>
             <div className="Container">
                 <div className='header__t p-[20px] flex items-center justify-between'>
                     <h2 className='header__t__date text-[13px] ml-[25%]'>
@@ -125,7 +126,7 @@ export default function Header({ isActiveModal }) {
                         <h2 className='hover:underline text-[13px]'>
                             {t('eye-none')}
                         </h2>
-                    </div>  
+                    </div>
                     <div className="header__t__lan flex items-center gap-[15px]">
                         <button
                             className={`text-[12px] hover:underline ${i18n.language === 'oz' ? 'font-bold  underline' : ''}`}
@@ -193,10 +194,9 @@ export default function Header({ isActiveModal }) {
                     </div>
                 </div>
                 <div ref={menuRef} className='header__b w-[100%] flex items-center justify- pb-[20px] pt-[20px] border-t border-[rgba(247,247,247,0.4)'>
-                    <div onClick={isActiveModal} className='header__b__burger hidden px-[10px] py-[5px] opacity-[0.8] bg-[white] text-[30px] text-[#000000a4] rounded-[5px]'>
+                    <div onClick={() => setActiveHeaderModal(true)} className='header__b__burger hidden px-[10px] py-[5px] opacity-[0.8] bg-[white] text-[30px] text-[#000000a4] rounded-[5px]'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.3} d="M3 6h18M3 12h18M3 18h18"></path></svg>
                     </div>
-
                     {data?.map((item, index) => (
                         <div key={index} className="relative">
                             <NavLink to={item?.url}>
@@ -267,6 +267,7 @@ export default function Header({ isActiveModal }) {
                 </div>
             </div>
             <HeaderVison isOpen={visionModal} ref={modalRef1} />
+            <HeaderModal data={data} isActive={activeHeaderModal} onClose={() => setActiveHeaderModal(false)} />
         </header>
     );
 }

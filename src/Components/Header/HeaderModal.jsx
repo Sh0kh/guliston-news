@@ -4,10 +4,10 @@ import logo from '../../img/logo.png';
 import { Accordion, AccordionHeader, AccordionBody } from "@material-tailwind/react";
 import { useState } from "react";
 
-export default function HeaderModal({ isActive, onClose }) {
+export default function HeaderModal({ isActive, onClose, data }) {
     const { t } = useTranslation();
     const location = useLocation();
-    const [open, setOpen] = useState(0); // State to control the accordion
+    const [open, setOpen] = useState(0);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -32,22 +32,22 @@ export default function HeaderModal({ isActive, onClose }) {
             { title: 'Section 8', links: ['/link22', '/link23', '/link24'] },
         ];
 
-        return sections.map((section, index) => (
+        return data?.map((section, index) => (
             <Accordion key={index} open={open === index + 1} className="rounded-[8px] border-none">
                 <AccordionHeader onClick={() => handleOpen(index + 1)} className="text-white">
                     <h2 className="text-[white]">
-                        {t(section.title)}
+                        {section?.menu?.name}
                     </h2>
                 </AccordionHeader>
                 <AccordionBody className="bg-[#076AC8]  border-none text-white p-[2px] rounded-b-[8px]">
                     <ul className="p-[5px]">
-                        {section.links.map((link, idx) => (
-                            <li key={idx} className="mb-[10px]">
+                        {section?.subMenus.map((subItem, subIndex) => (
+                            <li key={subIndex} className="mb-[10px] mt-[10px]">
                                 <NavLink
-                                    to={link}
-                                    className={`block ${isActivePath(link) ? "text-blue-500" : "text-white"}`}
+                                    onClick={() => { onClose(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                                    to={`/sahifa/${subItem?.id}`}
                                 >
-                                    {t(`Link ${idx + 1}`)}
+                                    {subItem?.name}
                                 </NavLink>
                             </li>
                         ))}
@@ -69,6 +69,50 @@ export default function HeaderModal({ isActive, onClose }) {
                             </h1>
                         </div>
                         {renderAccordionItems()}
+                        <div className="mt-[20px] flex items-start flex-col gap-[10px]">
+                            <NavLink to={'/rahbariyat'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Rahbariyat
+                                </button>
+                            </NavLink>
+                            <NavLink to={'/apparat-xodimlari'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Apparat xodimlari
+                                </button>
+                            </NavLink>
+                            <NavLink to={'/yangiliklar'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Yangiliklar
+                                </button>
+                            </NavLink>
+                            <NavLink to={'/koruption'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Korrupsiyaga qarshi kurashish
+                                </button>
+                            </NavLink>
+                            <NavLink to={'/ochiq-malumot'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Ochiq ma'lumot
+                                </button>
+                            </NavLink>
+                            <NavLink to={'/boglanish'}>
+                                <button
+                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
+                                >
+                                    Bog'lanish
+                                </button>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>
