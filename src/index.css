@@ -1,0 +1,166 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Roboto", serif;
+}
+
+body {
+  background-color: rgba(7, 106, 200, 0.1);
+  background-image: url('./img/bgHome.png');
+}
+
+.theme-dark {
+  filter: grayscale(100%);
+}
+
+.theme-gray {
+  filter: grayscale(100%) invert(100%);
+}
+
+.Container {
+  width: 1470px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+section {
+  overflow: hidden;
+}
+
+.modal2 {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Modal3Content {
+  width: 400px;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.modal2.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.Modal2Content {
+  width: 50%;
+  background-color: #fff;
+  transition: right 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1466B3;
+  border-radius: 15px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+header,
+footer {
+  width: 100%;
+  background-color: #1466B3;
+  background-image: url('./img/bgLine.png');
+}
+
+.LoadingModal {
+  background-color: #1466B3;
+  background-image: url('./img/bgLine.png');
+}
+
+
+.headerModalShadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(51, 51, 51, .5);
+  transform: translateX(-100%);
+  transition: all .6s cubic-bezier(0.45, 0.48, 0.75, 0.76) 1s;
+  visibility: visible;
+  height: 100vh;
+  z-index: 1000000;
+}
+
+.headerModal {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 80%;
+  height: 100vh;
+  background-color: #1466B3;
+  padding: 24px;
+  background-image: url('./img/bgLine.png');
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: all 2s ease;
+  z-index: 110000000
+}
+
+.db_shadow {
+  transform: translateX(0);
+  transition: all .6s cubic-bezier(.22, .61, .24, 1) 0s;
+}
+
+.db {
+  transform: translateX(0);
+}
+
+.Admin__header__wrapper {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 10px;
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.animate_swiper_card {
+  background-color: rgba(7, 106, 200, 0.5) url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRinA2sqt0LPEvrxC6Mbpn5qnIEKS1wB58Y8A&s);
+}
+
+.Page table {
+  /* width: 100% !important; */
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.fr-wrapper {
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+}
