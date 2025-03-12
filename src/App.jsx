@@ -22,7 +22,7 @@ import Menu from "./Components/AdminPages/Menu";
 import SubMenu from "./Components/AdminPages/SubMenu";
 import PageCreate from "./Components/AdminPages/PageCreate";
 import SubMenuData from "./Components/AdminPages/SubMenuData";
-import PageEdit from "./Components/AdminPages/Pageedit";
+import PageEdit from "./Components/AdminPages/PageEdit";
 import Page from "./Pages/Page";
 import Statistics from "./Components/AdminPages/Statistics";
 import ErrorPage from "./Pages/ErrorPage";
