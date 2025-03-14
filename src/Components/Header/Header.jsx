@@ -179,16 +179,16 @@ export default function Header({ isActiveModal }) {
                         </div>
                     </NavLink>
                     <div className='flex items-center gap-[20px]'>
-                        <a className='text-[32px]' href="https://www.facebook.com/Sirdaryohokimligi" target="_blank" rel="noopener noreferrer">
+                        <a className='text-[32px]' href="https://www.facebook.com/Guliston0336/" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 0 1 1-1h3v-4h-3a5 5 0 0 0-5 5v2.01h-2l-.396 3.98h2.396z"></path></svg>
                         </a>
-                        <a className='text-[32px]' href="https://www.instagram.com/sirdaryohokimligi/" target="_blank" rel="noopener noreferrer">
+                        <a className='text-[32px]' href="https://www.instagram.com/gulistonshahar_hokimligi/" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path></svg>
                         </a>
-                        <a className='text-[32px]' href="https://www.youtube.com/channel/UCrjORuJqc-pPPjl3zvRxZMw" target="_blank" rel="noopener noreferrer">
+                        <a className='text-[32px]' href="https://www.youtube.com/channel/UCMIkh90sFxZdiZTqwBgzzaA" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M12 4.15c-1.191 0-2.58.028-3.934.066l-.055.002c-1.378.039-2.49.07-3.366.215c-.913.151-1.671.44-2.277 1.063c-.608.625-.873 1.398-.998 2.323c-.12.89-.12 2.018-.12 3.42v1.524c0 1.4 0 2.528.12 3.419c.124.925.39 1.698.998 2.323c.606.624 1.364.912 2.277 1.063c.876.145 1.988.176 3.366.215l.055.002c1.355.038 2.743.066 3.934.066s2.58-.028 3.934-.066l.055-.002c1.378-.039 2.49-.07 3.366-.215c.913-.151 1.671-.44 2.277-1.063c.608-.625.874-1.398.998-2.323c.12-.89.12-2.018.12-3.42v-1.524c0-1.401 0-2.529-.12-3.419c-.124-.925-.39-1.698-.998-2.323c-.606-.624-1.364-.912-2.277-1.063c-.876-.145-1.988-.176-3.367-.215l-.054-.002A145 145 0 0 0 12 4.15m-1.128 10.501A.75.75 0 0 1 9.75 14v-4a.75.75 0 0 1 1.122-.651l3.5 2a.75.75 0 0 1 0 1.302z" clipRule="evenodd"></path></svg>
                         </a>
-                        <a className='text-[32px]' href="https://t.me/SirdaryoUz" target="_blank" rel="noopener noreferrer">
+                        <a className='text-[32px]' href="https://t.me/GulistanUz" target="_blank" rel="noopener noreferrer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fillRule="evenodd" d="M18.483 19.79v-.002l.018-.043L21.5 4.625v-.048c0-.377-.14-.706-.442-.903c-.265-.173-.57-.185-.784-.169a2.7 2.7 0 0 0-.586.12a3 3 0 0 0-.24.088l-.013.005l-16.72 6.559l-.005.002a1 1 0 0 0-.149.061a2.3 2.3 0 0 0-.341.19c-.215.148-.624.496-.555 1.048c.057.458.372.748.585.899a2 2 0 0 0 .403.22l.032.014l.01.003l.007.003l2.926.985q-.016.276.057.555l1.465 5.559a1.5 1.5 0 0 0 2.834.196l2.288-2.446l3.929 3.012l.056.024c.357.156.69.205.995.164c.305-.042.547-.17.729-.315a1.74 1.74 0 0 0 .49-.635l.008-.017l.003-.006zM7.135 13.875a.3.3 0 0 1 .13-.33l9.921-6.3s.584-.355.563 0c0 0 .104.062-.209.353c-.296.277-7.071 6.818-7.757 7.48a.3.3 0 0 0-.077.136L8.6 19.434z" clipRule="evenodd"></path></svg>
                         </a>
                     </div>
@@ -223,21 +223,7 @@ export default function Header({ isActiveModal }) {
                             )}
                         </div>
                     ))}
-                    {/* <NavLink to={'/rahbariyat'}>
-                        <button
-                            className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
-                        >
-                            {t("rahbariyat")}
-                        </button>
-                    </NavLink>
-                    <NavLink to={'/apparat-xodimlari'}>
-                        <button
-                            className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
-                        >
-                     {t("Apparat-xodim")}
-
-                        </button>
-                    </NavLink> */}
+                
                     <NavLink to={'/yangiliklar'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"

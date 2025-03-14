@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,8 @@ export default function Koruption() {
             { opacity: 1, y: 0, zIndex: 1, duration: 1.3, ease: "power1.inOut" }
         );
     });
+        const { t } = useTranslation();
+    
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const getKorup = async () => {
@@ -42,7 +45,7 @@ export default function Koruption() {
         <div className="Koruption mt-[30px] pb-[30px]">
             <div className="Container">
                 <h1 className="News__Hero__title border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
-                    Korrupsiyaga qarshi kurashish
+                {t("Korup")}
                 </h1>
                 {data?.length > 0 ? (
                     <div className="bg-white p-4 shadow-md rounded-lg mb-4">

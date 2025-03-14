@@ -4,10 +4,12 @@ import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function OpenData() {
+        const { t } = useTranslation();
     useGSAP(() => {
         gsap.fromTo('.Koruption',
             { opacity: 0, y: 100, zIndex: 1 },
@@ -42,7 +44,7 @@ export default function OpenData() {
         <div className="Koruption mt-[30px] pb-[30px]">
             <div className="Container">
                 <h1 className="News__Hero__title border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
-                    Ochiq ma'lumotlar
+                {t("Open-info")}
                 </h1>
                 {data?.length > 0 ? (
                     <div className="bg-white p-4 shadow-md rounded-lg mb-4">

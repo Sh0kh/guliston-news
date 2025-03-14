@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
+
 import { useEffect, useState } from "react";
 import ReactLoading from "react-loading";
 
@@ -13,6 +15,7 @@ export default function Hero() {
       { opacity: 1, y: 0, zIndex: 1, duration: 1.3, ease: "power1.inOut" }
     );
   });
+    const { t } = useTranslation();
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -62,7 +65,7 @@ export default function Hero() {
     <section className="News__Hero py-[30px]">
       <div className="Container">
         <h1 className="News__Hero__title border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
-          Yangiliklar
+        {t("news")}
         </h1>
         <div className="flex items-center flex-col">
           {data.length === 0 ? (

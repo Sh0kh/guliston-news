@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useTranslation } from 'react-i18next';
+
 import 'swiper/css/pagination';
 import ExampleFoto from '../../img/HomeHero.jpg'
 import { NavLink } from 'react-router-dom';
@@ -12,6 +14,8 @@ import { useEffect, useState } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero({ NewsData, showNewsData }) {
+        const { t } = useTranslation();
+    
     const [data, setData] = useState([])
     const [ShowData, setShowData] = useState([])
     useGSAP(() => {
@@ -92,7 +96,7 @@ export default function Hero({ NewsData, showNewsData }) {
                     <div className='Home__Hero__card w-[55%] z-0'>
                         <div className="bg-[white] shadow-xl p-[10px] rounded-[5px]">
                             <h2 className='text-MainColor border-l-MainColor border-l-[3px] pl-[5px] text-[20px] font-bold'>
-                                So‘nggi yangiliklar
+                               {t("recently")}
                             </h2>
                         </div>
                         <div className="Home__Hero__Grid grid grid-cols-2 gap-5 mt-[10px]">

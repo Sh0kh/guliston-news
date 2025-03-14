@@ -4,8 +4,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Owl() {
+    const { t } = useTranslation();
+
     return (
         <section className="Owl py-[10px] bg-[white] w-full mt-[30px] relative">
             <div className="Container relative">
@@ -51,7 +54,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Korrupsiyaga qarshi kurashish
+                                               {t("Korup")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
@@ -69,7 +72,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Apparat xodimlari
+                                               {t("Apparat-xodim")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
@@ -87,7 +90,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Ochiq ma'lumotlar
+                                                {t("Open-info")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
@@ -105,7 +108,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Rahbariyat
+                                                {t("rahbariyat")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
@@ -123,7 +126,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Yangiliklar
+                                                {t("news")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
@@ -141,7 +144,7 @@ export default function Owl() {
                                     <div className="flex items-center justify-between h-full">
                                         <div className="bg-[#EFF4FA] h-full p-[20px] rounded-[10px] ml-[7px] w-[70%]">
                                             <h3 className="text-[14px] font-normal">
-                                                Bog'lanish
+                                               {t("Boglanish")}
                                             </h3>
                                         </div>
                                         <div className="w-[30%] flex items-center justify-center hover:text-[40px] duration-500 text-[white] text-[30px]">
