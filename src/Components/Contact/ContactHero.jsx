@@ -4,12 +4,12 @@ import { useTranslation } from "react-i18next";
 
 export default function ContactHero() {
   const { t, i18n } = useTranslation();
-  
+
   return (
     <section className={'mt-[30px]'}>
       <div className="Container ">
         <h1 className="border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
-        {t("Boglanish")}
+          {t("Boglanish")}
         </h1>
         <div className="contact_wr   mt-[20px] flex items-start gap-[30px] ">
           <div className="w-[100%] p-[20px] bg-[white] rounded-[10px]">
@@ -23,9 +23,9 @@ export default function ContactHero() {
                 </g>
               </svg>
               <span>
-              {t("Phone-number")}
+                {t("Phone-number")}
               </span>
-              <a href="tel:+998672254090">(67) 225-40-90</a>
+              <a href="tel:+998672254090">+998 67 225-40-40</a>
             </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
               <svg xmlns="http://www.w3.org/2000/svg" id="phone-call" width="22.562" height="22.609" viewBox="0 0 22.562 22.609">
@@ -34,9 +34,9 @@ export default function ContactHero() {
                 </g>
               </svg>
               <span>
-              {t("Phone-number")}
+                {t("Phone-number")}
               </span>
-              <a href="tel:+998672252982">(67) 225-29-82</a>
+              <a href="tel:+998672252982">+998 67 235-03-73</a>
             </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
               <svg xmlns="http://www.w3.org/2000/svg" width="23.443" height="16.117" viewBox="0 0 23.443 16.117">
@@ -64,14 +64,17 @@ export default function ContactHero() {
                 </g>
               </svg>
 
-              <a href="https://sirdaryo.uz/">sirdaryo_official@umail.uz</a>
-            </div>
+              <a
+                className="underline text-MainColor"
+                href="https://t.me/GulistonshaharUzbot">
+                Telegram bot
+              </a>            </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#004f97" d="M23 2H1v16h22zM7 10V6h2v4zm4-2V6h2v2zm6 2h-2V6h2zm-6 4V9h2v5zm-2 0H7v-3h2zm6 0v-3h2v3zm6 6H3v2h18z" /></svg>
 
 
               <a href="http://sirdaryo.uz/uz/docs/joriqnoma">
-              {t("e-mail")}
+                {t("e-mail")}
               </a>
             </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
@@ -79,7 +82,7 @@ export default function ContactHero() {
                 <path id="clock" d="M10.642,0A10.641,10.641,0,1,0,21.283,10.641,10.653,10.653,0,0,0,10.642,0ZM15.7,16.146a.886.886,0,0,1-1.254,0l-4.434-4.434a.883.883,0,0,1-.26-.627V5.321a.887.887,0,0,1,1.773,0v5.4L15.7,14.892A.886.886,0,0,1,15.7,16.146Zm0,0" fill="#004f97" />
               </svg>
               <span>
-              {t('Time-work')} : {t('Time-orgin')}
+                {t('Time-work')} : {t('Time-orgin')}
 
               </span>
             </div>
@@ -90,19 +93,12 @@ export default function ContactHero() {
                 </g>
               </svg>
               <span>
-              {t('New-adress')}
+                {t('New-adress')}
 
               </span>
             </div>
-            <div className='flex items-center gap-[5px] '>
-              <svg className='text-[80px]' xmlns="http://www.w3.org/2000/svg" width="28.043" height="1em" viewBox="0 0 24 24"><path fill="#004f97" d="M18 11H6V6h12m-1.5 11a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-9 0A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 14A1.5 1.5 0 0 1 9 15.5A1.5 1.5 0 0 1 7.5 17M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4z"></path></svg>
-              <span className='italic'>
-              {t('Bus-adress')}
-              
-              </span>
-            </div>
           </div>
-          <div className="contact_if m-w-[912] w-full h-[500px] bg-[white] p-[20px] rounded-[10px]">
+          <div className="contact_if m-w-[912] w-full h-[430px] bg-[white] p-[20px] rounded-[10px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.542367733867!2d68.77849627589138!3d40.4915254714277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b2073345bb68b5%3A0xa4fb6a9dd9056c19!2sGuliston%20shahar!5e1!3m2!1sru!2s!4v1741610228473!5m2!1sru!2s"
               width="100%"

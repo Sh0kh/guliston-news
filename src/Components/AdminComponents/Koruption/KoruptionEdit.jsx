@@ -147,7 +147,7 @@ export default function KoruptionEdit({ isOpen, onClose, refresh, ID }) {
                             htmlFor="imageUpload"
                             className="bg-MainColor w-full text-white px-4 py-[5px] rounded-lg shadow-lg border-2 border-MainColor duration-500 hover:text-MainColor hover:bg-transparent cursor-pointer flex items-center justify-center"
                         >
-                            Foto
+                            File
                         </label>
                     </div>
                     <button

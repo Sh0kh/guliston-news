@@ -62,10 +62,10 @@ export default function StatisticAppeals({Stdata}) {
                         <div key={index} className="w-full cursor-pointer">
                             <div className="flex items-end justify-between mt-[30px]">
                                 <h2 className="text-[18px] font-bold text-[#262626]">
-                                    {key === "requestsCount" && "Ko‘rib chiqilmoqda"}
-                                    {key === "viewedRequestsCount" && "Ko'rilgan so'rovlar soni:"}
-                                    {key === "pendingRequestsCount" && "Kutilayotgan so'rovlar soni:"}
-                                    {key === "percentViewedRequestsCount" && "Koʻrilgan soʻrovlar foizda"}
+                                    {key === "requestsCount" &&  t("static-kor")}
+                                    {key === "viewedRequestsCount" &&  t("number-title") }
+                                    {key === "pendingRequestsCount" && t("waited-num")}
+                                    {key === "percentViewedRequestsCount" && t("number-stat")}
                                 </h2>
                                 <span className="text-[40px] h-[50px] font-bold text-[#262626]">
                                     {counts[key] || 0}

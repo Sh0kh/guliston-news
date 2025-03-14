@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import FroalaEditorComponent from "react-froala-wysiwyg";
 
@@ -118,8 +119,10 @@ export default function RichBox({ value, onChange, FileArr }) {
 
                     if (response.data) {
                         const newFileId = response?.data?.object?.id;
+                        console.log(newFileId)
                         resolve(response?.data?.object?.mediaUrl);
-                        console?.log(response?.data?.object?.mediaUrl)
+                        console.log(response?.data?.object?.mediaUrl);
+                        
                         FileArr(prev => [...prev, newFileId])
                     } else {
                         reject('Invalid response from server');

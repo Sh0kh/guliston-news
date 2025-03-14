@@ -66,17 +66,24 @@ export default function Percent({ NewsData }) {
                         {data?.map((i, index) => (
                             <SwiperSlide
                                 onClick={() => { navigate(`/yangiliklar/${i?.id}`) }}
-                                key={index} className="py-[30px]">
-                                <div className='bg-[white] cursor-pointer border-b-MainColor border-b-[5px] p-[15px] rounded-[10px] '>
-                                    <h3 className='font-bold'>
-                                        {i?.title?.split(' ').length > 10
-                                            ? i?.title?.split(' ').slice(0, 10).join(' ') + '...'
+                                key={index}
+                                className="py-[30px]"
+                            >
+                                <div className="bg-[white] cursor-pointer border-b-MainColor border-b-[5px] p-[15px] rounded-[10px] flex flex-col justify-between min-h-[130px] max-h-[130px]">
+                                    <h3 className="font-bold">
+                                        {i?.title?.split(' ').length > 8
+                                            ? i?.title?.split(' ').slice(0, 8).join(' ') + '...'
                                             : i?.title}
                                     </h3>
-                                    <div className='flex items-center justify-between mt-[20px]'>
-                                        <div className='flex items-center gap-[10px]'>
-                                            <svg className='text-[25px] opacity-[0.5]' xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M2 9c0-1.886 0-2.828.586-3.414S4.114 5 6 5h12c1.886 0 2.828 0 3.414.586S22 7.114 22 9c0 .471 0 .707-.146.854C21.707 10 21.47 10 21 10H3c-.471 0-.707 0-.854-.146C2 9.707 2 9.47 2 9m0 9c0 1.886 0 2.828.586 3.414S4.114 22 6 22h12c1.886 0 2.828 0 3.414-.586S22 19.886 22 18v-5c0-.471 0-.707-.146-.854C21.707 12 21.47 12 21 12H3c-.471 0-.707 0-.854.146C2 12.293 2 12.53 2 13z"></path><path stroke="currentColor" strokeLinecap="round" strokeWidth={2.3} d="M7 3v3m10-3v3"></path></g></svg>
-                                            <span className='opacity-[0.5]'>
+                                    <div className="flex items-center justify-between mt-[20px]">
+                                        <div className="flex items-center gap-[10px]">
+                                            <svg className="text-[25px] opacity-[0.5]" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                                <g fill="none">
+                                                    <path fill="currentColor" d="M2 9c0-1.886 0-2.828.586-3.414S4.114 5 6 5h12c1.886 0 2.828 0 3.414.586S22 7.114 22 9c0 .471 0 .707-.146.854C21.707 10 21.47 10 21 10H3c-.471 0-.707 0-.854-.146C2 9.707 2 9.47 2 9m0 9c0 1.886 0 2.828.586 3.414S4.114 22 6 22h12c1.886 0 2.828 0 3.414-.586S22 19.886 22 18v-5c0-.471 0-.707-.146-.854C21.707 12 21.47 12 21 12H3c-.471 0-.707 0-.854.146C2 12.293 2 12.53 2 13z"></path>
+                                                    <path stroke="currentColor" strokeLinecap="round" strokeWidth={2.3} d="M7 3v3m10-3v3"></path>
+                                                </g>
+                                            </svg>
+                                            <span className="opacity-[0.5]">
                                                 {i?.createdAt ? new Date(i.createdAt).toLocaleDateString('ru-RU') : ''}
                                             </span>
                                         </div>

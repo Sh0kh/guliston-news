@@ -16,6 +16,7 @@ export default function AdminNewsCreate() {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState('')
     const [mediaType, setMediaType] = useState(null)
+    const [fileId, setFileId] = useState([])
 
 
 
@@ -76,17 +77,17 @@ export default function AdminNewsCreate() {
             setRuData({
                 context: '',
                 name: '',
-                info:''
+                info: ''
             })
             setOzData({
                 context: '',
                 name: '',
-                info:''
+                info: ''
             })
             setUzData({
                 context: '',
                 name: '',
-                info:''
+                info: ''
             })
 
             Swal.fire({
@@ -139,7 +140,7 @@ export default function AdminNewsCreate() {
                     ))}
                 </div>
             </div>
-            {lang === 'Uzb' ? <Uz value={uzData} onChange={setUzData}  /> : lang === 'Russ' ? <Ru  value={ruData} onChange={setRuData} /> : lang === 'Kiril' ? <Oz  value={ozData} onChange={setOzData} /> : ''}
+            {lang === 'Uzb' ? <Uz value={uzData} onChange={setUzData} FileArr={setFileId} /> : lang === 'Russ' ? <Ru value={ruData} onChange={setRuData} FileArr={setFileId} /> : lang === 'Kiril' ? <Oz value={ozData} FileArr={setFileId} onChange={setOzData} /> : ''}
             <div className="bg-white mt-[10px] p-[10px] shadow-lg rounded-[10px]">
                 <label className="w-full block mb-[10px]">
                     <span className="text-[black] block text-[13px] cursor-pointer">

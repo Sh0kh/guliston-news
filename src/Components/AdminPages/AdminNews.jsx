@@ -92,11 +92,11 @@ export default function AdminNews() {
                                     <td className="p-3">
                                         <img src={news.contentUrl} alt={news.contentUrl} className="w-[80px] h-[80px] object-cover rounded-md" />
                                     </td>
-                                    <td className="p-3">{news.title}</td>
+                                    <td className="p-3 truncate max-w-[150px]">{news.title}</td>
                                     <td className="p-3 truncate max-w-[150px]">{news.description}</td>
                                     <td className="p-3">
                                         <a href={news.url} className="text-MainColor hover:underline">Link</a>
-                                    </td>
+                                    </td >
                                     <td className="p-3">{news.mediaType === "MEDIA" ? 'Ijtimoiy tarmoq' : news?.mediaType === 'YOUTUBE_URL' ? "Youtube" : news?.mediaType === 'TEXT' ? "Matnli" : 'Boshqa'}</td>
                                     <td className="p-3">
                                         <div className="flex items-center gap-[5px]">

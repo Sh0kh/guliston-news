@@ -81,35 +81,40 @@ export default function HeaderModal({ isActive, onClose, data }) {
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    Apparat xodimlari
+                                                        {t("rahbariyat")}
+
                                 </button>
                             </NavLink>
                             <NavLink to={'/yangiliklar'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    Yangiliklar
+                                                   {t("news")}
+
                                 </button>
                             </NavLink>
                             <NavLink to={'/koruption'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    Korrupsiyaga qarshi kurashish
+                                                       {t("Korup")}
+
                                 </button>
                             </NavLink>
                             <NavLink to={'/ochiq-malumot'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    Ochiq ma'lumot
+                                    
+                            {t("Open-info")}
                                 </button>
                             </NavLink>
                             <NavLink to={'/boglanish'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    Bog'lanish
+                                                              {t("Boglanish")}
+
                                 </button>
                             </NavLink>
                         </div>

@@ -212,56 +212,62 @@ export default function Header({ isActiveModal }) {
                                     {item?.subMenus.map((subItem, subIndex) => (
                                         <NavLink
                                             key={subIndex}
-                                            to={`/sahifa/${subItem?.id}`}
+                                            to={subItem?.id === 2 ? "/rahbariyat" : subItem?.id === 3 ? "/apparat-xodimlari" : `/sahifa/${subItem?.id}`}
                                             className="block px-4 text-[black] rounded-[5px] py-2 hover:bg-MainColor hover:text-[white] transition-all"
                                         >
                                             {subItem?.name}
                                         </NavLink>
                                     ))}
+
                                 </div>
                             )}
                         </div>
                     ))}
-                    <NavLink to={'/rahbariyat'}>
+                    {/* <NavLink to={'/rahbariyat'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Rahbariyat
+                            {t("rahbariyat")}
                         </button>
                     </NavLink>
                     <NavLink to={'/apparat-xodimlari'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Apparat xodimlari
+                     {t("Apparat-xodim")}
+
                         </button>
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink to={'/yangiliklar'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Yangiliklar
+                            {t("news")}
+
                         </button>
                     </NavLink>
                     <NavLink to={'/koruption'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Korrupsiyaga qarshi kurashish
+                            {t("Korup")}
+
                         </button>
                     </NavLink>
                     <NavLink to={'/ochiq-malumot'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Ochiq ma'lumot
+
+                            {t("Open-info")}
+
                         </button>
                     </NavLink>
                     <NavLink to={'/boglanish'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                         >
-                            Bog'lanish
+                            {t("Boglanish")}
                         </button>
                     </NavLink>
                 </div>

@@ -27,7 +27,17 @@
   "foreign_affairs": "O‘zbekiston Respublikasi Tashqi ishlar vazirligi",
   "legal_portal": "Milliy huquqiy internet portali",
     "Boglanish": "Bog'lanish",
-    "Aloqa": "Aloqa"
-  
+    "Aloqa": "Aloqa",
+    "static-kor":"Ko‘rib chiqilmoqda",
+    "number-title":"Ko'rilgan so'rovlar soni:",
+    "waited-num":"Kutilayotgan so'rovlar soni:",
+    "number-stat":"Koʻrilgan soʻrovlar foizda",
+    "rahbariyat":"Rahbariyat",
+    "Apparat-xodim":"Apparat xodimlar",
+    "news":"Yangiliklar",
+    "Korup":"Korrupsiyaga qarshi kurash",
+    "Open-info":"Ochiq ma'lumotlar",
+    "Telefon":"Telefon:",
+    "qabul":"Qabul kunlari"
   
 }
