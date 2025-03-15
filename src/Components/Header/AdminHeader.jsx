@@ -26,19 +26,19 @@ export default function AdminHeader() {
                         onClick={() => changeLanguage('uz')}
                         className={`py-[10px] px-[15px] duration-500 border-[2px] border-MainColor shadow-xl rounded-[10px]  
                         ${i18n?.language === 'uz' ? "bg-transparent text-MainColor" : 'bg-MainColor text-[white]'}`}>
-                        Uzb
+                        Uz
                     </button>
                     <button
                         onClick={() => changeLanguage('ru')}
                         className={`py-[10px] px-[15px] border-[2px] duration-500 border-MainColor shadow-xl rounded-[10px]  
                         ${i18n?.language === 'ru' ? "bg-transparent text-MainColor" : 'bg-MainColor text-[white]'}`}>
-                        Рус
+                        Ru
                     </button>
                     <button
                         onClick={() => changeLanguage('oz')}
                         className={`py-[10px] px-[15px] border-[2px] duration-500 border-MainColor shadow-xl rounded-[10px]  
                         ${i18n?.language === 'oz' ? "bg-transparent text-MainColor" : 'bg-MainColor text-[white]'}`}>
-                        Узб
+                        Kiril
                     </button>
                 </div>
                 <div>
