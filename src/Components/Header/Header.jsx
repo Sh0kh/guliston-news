@@ -38,7 +38,6 @@ export default function Header({ isActiveModal }) {
             }
         )
     });
-
     const updateTime = () => {
         const now = new Date();
 
@@ -54,8 +53,11 @@ export default function Header({ isActiveModal }) {
             oz: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
         };
 
-        const dayName = days[i18n.language][now.getDay() - 1];
-        const monthName = months[i18n.language][now.getMonth()];
+        // Ensure i18n.language is valid
+        const lang = days[i18n.language] ? i18n.language : 'uz'; // Default to 'uz' if undefined
+
+        const dayName = days[lang][now.getDay() - 1] || days['uz'][now.getDay() - 1];
+        const monthName = months[lang][now.getMonth()] || months['uz'][now.getMonth()];
 
         const formattedTime = `${dayName}, ${now.getDate()} ${monthName} ${now.getFullYear()}, ${now.toLocaleTimeString('ru-RU')}`;
 
@@ -223,7 +225,7 @@ export default function Header({ isActiveModal }) {
                             )}
                         </div>
                     ))}
-                
+
                     <NavLink to={'/yangiliklar'}>
                         <button
                             className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
