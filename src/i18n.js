@@ -7,6 +7,14 @@ import oz from './locales/oz.json';
 import ru from './locales/ru.json';
 import uz from './locales/uz.json';
 
+// Устанавливаем язык по умолчанию, если он не сохранён
+const defaultLang = 'uz';
+const savedLang = localStorage.getItem('i18nextLng');
+
+if (!savedLang) {
+    localStorage.setItem('i18nextLng', defaultLang);
+}
+
 const resources = {
     en: { translation: oz },
     ru: { translation: ru },
@@ -14,17 +22,16 @@ const resources = {
 };
 
 i18n
-    .use(LanguageDetector) // Detects the user's language
-    .use(initReactI18next) // React integration
+    .use(LanguageDetector)
+    .use(initReactI18next)
     .init({
-        resources, // Local translations
-        fallbackLng: 'uz', // Default language
-        interpolation: {
-            escapeValue: false, // No escaping required for React
-        },
+        resources,
+        lng: savedLang || defaultLang, // Устанавливаем язык при старте
+        fallbackLng: defaultLang,
+        interpolation: { escapeValue: false },
         detection: {
-            order: ['localStorage', 'cookie', 'navigator', 'htmlTag'], // Order of language detection
-            caches: ['localStorage'], // Store language in localStorage
+            order: ['localStorage', 'cookie', 'navigator', 'htmlTag'],
+            caches: ['localStorage'],
         },
     });
 
