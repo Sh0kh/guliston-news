@@ -18,7 +18,7 @@ i18n
     .use(initReactI18next) // React integration
     .init({
         resources, // Local translations
-        fallbackLng: 'en', // Default language
+        fallbackLng: 'uz', // Default language
         interpolation: {
             escapeValue: false, // No escaping required for React
         },
