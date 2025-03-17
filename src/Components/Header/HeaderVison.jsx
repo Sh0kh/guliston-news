@@ -29,7 +29,7 @@ const HeaderVison = forwardRef(({ isOpen, }, ref) => {
     return (
         <div
         ref={ref}
-        className={`visonModal absolute top-[65px] right-[350px] rounded-[8px] border border-[#E9EAEB] w-[300px] bg-white p-[20px] shadow-md ${
+        className={`visonModal absolute top-[65px] sm:right-[22%] right-[10%] rounded-[8px] border border-[#E9EAEB] w-[300px] bg-white p-[20px] shadow-md ${
             isOpen ? "!block" : "hidden"
         }`}
     >

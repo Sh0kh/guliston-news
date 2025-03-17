@@ -55,7 +55,7 @@ export default function AnimateSwiper({ data }) {
                 >
                     {swData.map((slide, index) => (
                         <SwiperSlide onClick={() => openModal(slide.mediaUrl)} key={index} className="animate_swiper_card rounded-lg h-[200px] shadow-md overflow-hidden relative">
-                            <img src={slide.mediaUrl} alt={slide.alt} className="w-full h-[350px] object-cover rounded-md" />
+                            <img src={slide.mediaUrl} alt={slide.alt} className="w-full h-[150px] sm:h-[350px] object-cover rounded-md" />
                             <div className="absolute inset-0 bg-blue-500 bg-opacity-40 flex items-center justify-center">
                                 {slide.mediaType === "MEDIA" ? (
                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><g fill="none"><path fill="#fff" fill-rule="evenodd" d="M3.172 3.172C2 4.343 2 6.229 2 10v4c0 3.771 0 5.657 1.172 6.828S6.229 22 10 22h4c3.771 0 5.657 0 6.828-1.172S22 17.771 22

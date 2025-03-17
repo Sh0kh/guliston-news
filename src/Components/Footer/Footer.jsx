@@ -38,7 +38,7 @@ export default function Footer() {
         <footer className="text-[white] pt-[50px] pb-[20px] mt-[30px]">
             <div className="Container">
                 <div className="Footer__wrapper flex items-start justify-between gap-[50px]">
-                    <div className="bg-[#076AC8] w-[100%] p-[30px]">
+                    <div className="bg-[#076AC8] w-[100%] p-[5px] sm:p-[30px]">
                         <div className='logo flex items-center gap-[10px] '>
                             <img src={logo} alt="Logo" />
                             <h1 class="w-[200px] font-bold text-[18px] tracking-[0.27px] uppercase text-[rgba(247,247,247,1)] ml-[15px]">
@@ -87,12 +87,6 @@ export default function Footer() {
                             <svg className='text-[30px]' xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"></path></svg>
                             <span>
                                 {t('New-adress')}
-                            </span>
-                        </div>
-                        <div className='flex items-center gap-[5px] mt-[30px]'>
-                            <svg className='text-[80px]' xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18 11H6V6h12m-1.5 11a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m-9 0A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 14A1.5 1.5 0 0 1 9 15.5A1.5 1.5 0 0 1 7.5 17M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4z"></path></svg>
-                            <span className='italic'>
-                                {t('Bus-adress')}
                             </span>
                         </div>
                     </div>

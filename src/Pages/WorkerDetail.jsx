@@ -42,32 +42,33 @@ export default function WorkerDetail() {
             </div>
         )
     }
-
     return (
-        <section className="p-10">
-            <div className="bg-white p-6 shadow-lg rounded-lg flex gap-6 w-full">
-                {data?.photoUrl && (
-                    <img src={data.photoUrl} alt={data.fullName} className="w-60 h-60 rounded-lg object-cover border" />
-                )}
-                <div className="w-full">
-                    <p className="text-lg font-semibold">Telefon: <span className="font-normal">{data?.phoneNumber || "Noma'lum"}</span></p>
-                    <p className="text-lg font-semibold">Qabul vaqti: <span className="font-normal">{data?.receptionDateTimes || "Noma'lum"}</span></p>
-                    <p className="text-lg font-semibold">Kategoriya: <span className="font-normal">{data?.category || "Noma'lum"}</span></p>
-                    {data?.partyName && <p className="text-lg font-semibold">Partiya: <span className="font-normal">{data.partyName}</span></p>}
-                    {data?.position && <p className="text-lg font-semibold">Lavozim: <span className="font-normal">{data.position}</span></p>}
+        <section className="mt-[10px]">
+            <div className="Container">
+                <div className="Rh_wrapper bg-white p-6 shadow-lg rounded-lg  gap-6 w-full flex  ">
+                    {data?.photoUrl && (
+                        <img src={data.photoUrl} alt={data.fullName} className="w-60 h-60 rounded-lg object-cover border" />
+                    )}
+                    <div className="w-full">
+                        <p className="text-lg font-semibold">Telefon: <span className="font-normal">{data?.phoneNumber || "Noma'lum"}</span></p>
+                        <p className="text-lg font-semibold">Qabul vaqti: <span className="font-normal">{data?.receptionDateTimes || "Noma'lum"}</span></p>
+                        <p className="text-lg font-semibold">Kategoriya: <span className="font-normal">{data?.category || "Noma'lum"}</span></p>
+                        {data?.partyName && <p className="text-lg font-semibold">Partiya: <span className="font-normal">{data.partyName}</span></p>}
+                        {data?.position && <p className="text-lg font-semibold">Lavozim: <span className="font-normal">{data.position}</span></p>}
+                    </div>
                 </div>
-            </div>
-            <div className="bg-white p-6 shadow-lg rounded-lg w-full mt-6">
-                <h2 className="text-xl font-bold mb-2">Biografiya</h2>
-                <p className="text-base leading-relaxed">{data?.biography || "Ma'lumot mavjud emas"}</p>
-            </div>
-            <div className="bg-white p-6 shadow-lg rounded-lg w-full mt-6">
-                <h2 className="text-xl font-bold mb-2">Majburiyat</h2>
-                <p className="text-base leading-relaxed">{data?.obligation || "Ma'lumot mavjud emas"}</p>
-            </div>
-            <div className="bg-white p-6 shadow-lg rounded-lg w-full mt-6">
-                <h2 className="text-xl font-bold mb-2">Faoliyat</h2>
-                <p className="text-base leading-relaxed">{data?.activity || "Ma'lumot mavjud emas"}</p>
+                <div className="bg-white p-2 sm:p-6 shadow-lg rounded-lg w-full mt-6">
+                    <h2 className="text-xl font-bold mb-2">Biografiya</h2>
+                    <p className="text-base leading-relaxed">{data?.biography || "Ma'lumot mavjud emas"}</p>
+                </div>
+                <div className="bg-white p-2 sm:p-6 shadow-lg rounded-lg w-full mt-6">
+                    <h2 className="text-xl font-bold mb-2">Majburiyat</h2>
+                    <p className="text-base leading-relaxed">{data?.obligation || "Ma'lumot mavjud emas"}</p>
+                </div>
+                <div className="bg-white p-2 sm:p-6 shadow-lg rounded-lg w-full mt-6">
+                    <h2 className="text-xl font-bold mb-2">Faoliyat</h2>
+                    <p className="text-base leading-relaxed">{data?.activity || "Ma'lumot mavjud emas"}</p>
+                </div>
             </div>
         </section>
     );

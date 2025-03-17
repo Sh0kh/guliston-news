@@ -12,7 +12,7 @@ export default function ContactHero() {
           {t("Boglanish")}
         </h1>
         <div className="contact_wr   mt-[20px] flex items-start gap-[30px] ">
-          <div className="w-[100%] p-[20px] bg-[white] rounded-[10px]">
+          <div className="w-[100%] sm:p-[20px] p-[5px] bg-[white] rounded-[10px]">
             <h2 className='text-[18px] font-bold mt-[30px]'>
               {t("Aloqa")}
             </h2>
@@ -22,10 +22,12 @@ export default function ContactHero() {
                   <path id="Контур_5922" data-name="Контур 5922" d="M22.509,16.593l-3.155-3.155a2.1,2.1,0,0,0-3.493.789,2.147,2.147,0,0,1-2.479,1.352c-2.254-.563-5.3-3.493-5.86-5.86A2.042,2.042,0,0,1,8.874,7.24a2.1,2.1,0,0,0,.789-3.493L6.508.592a2.251,2.251,0,0,0-3.042,0L1.324,2.733c-2.141,2.254.225,8.226,5.522,13.522s11.268,7.775,13.522,5.521l2.141-2.141A2.25,2.25,0,0,0,22.509,16.593Z" transform="translate(-0.539 0)" fill="#004f97" />
                 </g>
               </svg>
+              <div className="flex items-center gap-[3px]">
               <span>
-                {t("Phone-number")}
+                {t("Phone-number")}:
               </span>
               <a href="tel:+998672254090">+998 67 225-40-40</a>
+              </div>
             </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
               <svg xmlns="http://www.w3.org/2000/svg" id="phone-call" width="22.562" height="22.609" viewBox="0 0 22.562 22.609">
@@ -33,10 +35,12 @@ export default function ContactHero() {
                   <path id="Контур_5922" data-name="Контур 5922" d="M22.509,16.593l-3.155-3.155a2.1,2.1,0,0,0-3.493.789,2.147,2.147,0,0,1-2.479,1.352c-2.254-.563-5.3-3.493-5.86-5.86A2.042,2.042,0,0,1,8.874,7.24a2.1,2.1,0,0,0,.789-3.493L6.508.592a2.251,2.251,0,0,0-3.042,0L1.324,2.733c-2.141,2.254.225,8.226,5.522,13.522s11.268,7.775,13.522,5.521l2.141-2.141A2.25,2.25,0,0,0,22.509,16.593Z" transform="translate(-0.539 0)" fill="#004f97" />
                 </g>
               </svg>
-              <span>
-                {t("Phone-number")}
-              </span>
-              <a href="tel:+998672252982">+998 67 235-03-73</a>
+              <div className="flex items-center gap-[3px]">
+                <span>
+                  {t("Phone-number")}:
+                </span>
+                <a href="tel:+998672252982">+998 67 235-03-73</a>
+              </div>
             </div>
             <div className='flex items-center gap-[5px] mt-[30px]'>
               <svg xmlns="http://www.w3.org/2000/svg" width="23.443" height="16.117" viewBox="0 0 23.443 16.117">

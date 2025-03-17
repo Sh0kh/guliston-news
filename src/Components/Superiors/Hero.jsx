@@ -60,7 +60,7 @@ export default function Hero() {
 
 
     return (
-        <section className="SuperiorsHero  py-[30px]">
+        <section className="SuperiorsHero py-[30px]">
             <div className="Container">
                 <h1 className="border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
                 {t("rahbariyat")}
@@ -69,7 +69,7 @@ export default function Hero() {
                 {data?.length > 0 ? (
                     <div className="flex items-center flex-col gap-[10px]">
                         {data?.map((i, index) => (
-                            <NavLink to={`/rahbariyat/${i?.id}`} className="rounded-[10px] p-[20px] w-[100%] ">
+                            <NavLink to={`/rahbariyat/${i?.id}`} className="rounded-[10px] w-[100%] ">
                                  <div
                             key={index} className="Sup__hero__card bg-[white] rounded-[10px] p-[15px] shadow-xl flex items-start gap-[30px]">
                                 <img className="cursor-pointer w-[350px] h-[300px] object-contain border-[1px] shadow-lg rounded-[10px]" src={i?.photoUrl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxXyMg0TtEsQUx8m31FNyPru_8KOUtnDtzbA&s'} alt="Foto" />
@@ -110,7 +110,6 @@ export default function Hero() {
                                 </div>
                             </div>
                             </NavLink>
-                           
                         ))}
                     </div>
                 ) : (

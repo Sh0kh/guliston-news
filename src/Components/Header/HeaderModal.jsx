@@ -13,7 +13,6 @@ export default function HeaderModal({ isActive, onClose, data }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const isActivePath = (path) => location.pathname === path;
 
     // Toggle accordion visibility
     const handleOpen = (value) => {
@@ -21,16 +20,6 @@ export default function HeaderModal({ isActive, onClose, data }) {
     };
 
     const renderAccordionItems = () => {
-        const sections = [
-            { title: 'Хокимият хакида', links: ['/link1', '/link2', '/link3'] },
-            { title: 'Section 2', links: ['/link4', '/link5', '/link6'] },
-            { title: 'Section 3', links: ['/link7', '/link8', '/link9'] },
-            { title: 'Section 4', links: ['/link10', '/link11', '/link12'] },
-            { title: 'Section 5', links: ['/link13', '/link14', '/link15'] },
-            { title: 'Section 6', links: ['/link16', '/link17', '/link18'] },
-            { title: 'Section 7', links: ['/link19', '/link20', '/link21'] },
-            { title: 'Section 8', links: ['/link22', '/link23', '/link24'] },
-        ];
 
         return data?.map((section, index) => (
             <Accordion key={index} open={open === index + 1} className="rounded-[8px] border-none">
@@ -45,7 +34,7 @@ export default function HeaderModal({ isActive, onClose, data }) {
                             <li key={subIndex} className="mb-[10px] mt-[10px]">
                                 <NavLink
                                     onClick={() => { onClose(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-                                    to={`/sahifa/${subItem?.id}`}
+                                    to={subItem?.id === 2 ? "/rahbariyat" : subItem?.id === 3 ? "/apparat-xodimlari" : `/sahifa/${subItem?.id}`}
                                 >
                                     {subItem?.name}
                                 </NavLink>
@@ -70,26 +59,12 @@ export default function HeaderModal({ isActive, onClose, data }) {
                         </div>
                         {renderAccordionItems()}
                         <div className="mt-[20px] flex items-start flex-col gap-[10px]">
-                            <NavLink to={'/rahbariyat'}>
-                                <button
-                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
-                                >
-                                    Rahbariyat
-                                </button>
-                            </NavLink>
-                            <NavLink to={'/apparat-xodimlari'}>
-                                <button
-                                    className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
-                                >
-                                                        {t("rahbariyat")}
 
-                                </button>
-                            </NavLink>
                             <NavLink to={'/yangiliklar'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                                   {t("news")}
+                                    {t("news")}
 
                                 </button>
                             </NavLink>
@@ -97,7 +72,7 @@ export default function HeaderModal({ isActive, onClose, data }) {
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                                       {t("Korup")}
+                                    {t("Korup")}
 
                                 </button>
                             </NavLink>
@@ -105,15 +80,15 @@ export default function HeaderModal({ isActive, onClose, data }) {
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                    
-                            {t("Open-info")}
+
+                                    {t("Open-info")}
                                 </button>
                             </NavLink>
                             <NavLink to={'/boglanish'}>
                                 <button
                                     className="px-4 py-2 text-white hover:text-black duration-500 font-semibold hover:bg-gray-200 rounded transition-all"
                                 >
-                                                              {t("Boglanish")}
+                                    {t("Boglanish")}
 
                                 </button>
                             </NavLink>

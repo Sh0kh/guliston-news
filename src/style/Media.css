@@ -1,97 +1,130 @@
-@media(max-width:1200px){
-    .header__b button{
+@media(max-width:1200px) {
+    .header__b button {
         display: none;
     }
-    .header__b__burger{
+
+    .header__b__burger {
         display: block;
     }
 }
-@media(max-width:1180px){
-    .Footer__wrapper{
+
+@media(max-width:1180px) {
+    .Footer__wrapper {
         flex-wrap: wrap;
         gap: 30px;
     }
-    .FooterFotoMap{
+
+    .FooterFotoMap {
         height: 300px;
     }
-    .LinksMap__Wrapper__grid{
-        grid-template-columns: repeat(1,1fr);
+
+    .LinksMap__Wrapper__grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
-@media(max-width:1030px){
-    .Home__Hero__Wrapper{
+
+@media(max-width:1030px) {
+    .Home__Hero__Wrapper {
         flex-direction: column;
     }
-    .Home__Hero__Swiper{
+
+    .Home__Hero__Swiper {
         width: 100%;
     }
-    .Home__Hero__card{
+
+    .Home__Hero__card {
         width: 100%;
     }
-    .StatisticAppeals__wrapper{
+
+    .StatisticAppeals__wrapper {
         flex-wrap: wrap;
     }
 }
-@media(max-width:900px){
-    .header__t__date{
+
+@media(max-width:900px) {
+    .header__t__date {
         display: none;
     }
 }
 
-@media(max-width:590px){
-    .Home__Hero__Grid{
-        grid-template-columns: repeat(1,1fr);
+@media(max-width:590px) {
+    .Home__Hero__Grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
-@media(max-width:800px){
-    .LinksMap__Wrapper{
+
+@media(max-width:800px) {
+    .LinksMap__Wrapper {
         flex-direction: column;
     }
-    .contact_wr{
+
+    .contact_wr {
         flex-wrap: wrap;
     }
-    .contact_if{
+
+    .contact_if {
         height: 300px;
     }
-    .HomeMap, .HomeLinks{
+
+    .HomeMap,
+    .HomeLinks {
         margin: 0 auto;
     }
-    .Sup__hero__card{
+
+    .Sup__hero__card {
         flex-direction: column;
         text-align: center;
     }
-    .Sup__hero__card img{
+
+    .Sup__hero__card img {
         width: 100% !important;
         min-width: 100%;
     }
-    .Sup__hero__card__wrapper{
+
+    .Sup__hero__card__wrapper {
         margin: 10px auto;
     }
 }
-@media(max-width:520px){
-    .header__m{
+
+@media(max-width:520px) {
+    .header__m {
         flex-direction: column;
         gap: 20px;
     }
-    .header__t__lan{
+
+    .header__t__lan {
         display: none;
     }
-    .header__m__lan{
+
+    .header__m__lan {
         display: flex;
         align-items: center;
         gap: 10px;
     }
 }
-@media(max-width:460px){
-    .Sup__hero__card__wrapper{
+
+@media(max-width:460px) {
+    .Rh_wrapper {
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .Rh_wrapper div{
+        text-align: center;
+    }
+
+    .Sup__hero__card__wrapper {
         flex-direction: column;
         gap: 20px;
         width: 100%;
     }
-    .SuperiorsHero h2{
+
+    .SuperiorsHero h2 {
         width: auto;
     }
-    .SuperiorsHero h1{
+
+    .SuperiorsHero h1 {
         width: auto;
     }
 }

@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
     const [data, setData] = useState([])
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const [loading, setLoading] = useState(true)
 
@@ -71,7 +71,7 @@ export default function Hero() {
                 {data?.length > 0 ? (
                     <div className="flex items-center flex-col gap-[30px]">
                         {data?.map((i, index) => (
-                            <NavLink to={`/apparat-xodimlar/${i?.id}`} className=" p-[20px] w-[100%] shadow-xl ">
+                            <NavLink to={`/apparat-xodimlar/${i?.id}`} className=" w-[100%] shadow-xl ">
                                 <div key={index} className="Sup__hero__card bg-[white] rounded-[10px] flex items-start gap-[30px]">
                                     <img className="cursor-pointer w-[350px] h-[300px] object-cover border-[1px] shadow-lg rounded-[10px]" src={i?.photoUrl || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxXyMg0TtEsQUx8m31FNyPru_8KOUtnDtzbA&s'} alt="Foto" />
                                     <div className="w-[100%]">
