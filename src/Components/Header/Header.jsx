@@ -59,7 +59,7 @@ export default function Header({ isActiveModal }) {
         const dayName = days[lang][now.getDay() - 1] || days['uz'][now.getDay() - 1];
         const monthName = months[lang][now.getMonth()] || months['uz'][now.getMonth()];
 
-        const formattedTime = `${dayName}, ${now.getDate()} ${monthName} ${now.getFullYear()}, ${now.toLocaleTimeString('ru-RU')}`;
+        const formattedTime = `${dayName}, ${now.getDate()} ${monthName} ${now.getFullYear()}, ${now.toLocaleTimeString('uz')}`;
 
         setCurrentTime(formattedTime);
     };
