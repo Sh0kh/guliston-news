@@ -140,12 +140,6 @@ export default function AdminNewsCreate() {
             </div>
             {lang === 'Uzb' ? <Uz value={uzData} onChange={setUzData} FileArr={setFileId} /> : lang === 'Russ' ? <Ru value={ruData} onChange={setRuData} FileArr={setFileId} /> : lang === 'Kiril' ? <Oz value={ozData} FileArr={setFileId} onChange={setOzData} /> : ''}
             <div className="bg-white mt-[10px] p-[10px] shadow-lg rounded-[10px]">
-                <label className="w-full block mb-[10px]">
-                    <span className="text-[black] block text-[13px] cursor-pointer">
-                        Media type
-                    </span>
-
-                </label>
                 <div className="w-full">
                     <input
                         type="file"
