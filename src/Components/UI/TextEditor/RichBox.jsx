@@ -122,7 +122,7 @@ export default function RichBox({ value, onChange, FileArr }) {
                         console.log(newFileId)
                         resolve(response?.data?.object?.mediaUrl);
                         console.log(response?.data?.object?.mediaUrl);
-                        
+
                         FileArr(prev => [...prev, newFileId])
                     } else {
                         reject('Invalid response from server');
@@ -176,8 +176,15 @@ export default function RichBox({ value, onChange, FileArr }) {
                     imageUploadParams: {}, // Дополнительные параметры для запроса
                     imageAllowedTypes: ["jpeg", "jpg", "png", "gif", "webp"],
 
+                
                     // Используем события для перехвата загрузки
                     events: {
+                        'save.before': function () {
+                            // Сохранение контента
+                            const editorContent = this.html.get();
+                            // Здесь логика сохранения контента на сервер
+                            return false; // Предотвращаем действие по умолчанию
+                        },
                         'image.beforeUpload': function (images) {
                             // Останавливаем стандартную загрузку
                             const editor = this;

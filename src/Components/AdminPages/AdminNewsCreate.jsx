@@ -159,12 +159,6 @@ export default function AdminNewsCreate() {
                         <option value="YOUTUBE_URL">Yotube</option>
                     </select>
                 </label>
-                <div className="mb-[10px]">
-                    <Input
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                        inputText={"Havola"} placeholder={"...."} />
-                </div>
                 <div className="w-full">
                     <input
                         type="file"

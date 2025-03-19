@@ -12,6 +12,15 @@ body {
   background-image: url('./img/bgHome.png');
 }
 
+body [style*="font-size: 12px"]:has(a[href*='froala']) {
+  display: none !important;
+}
+
+p[data-f-id="pbf"] {
+  display: none !important;
+}
+
+
 .theme-dark {
   filter: grayscale(100%);
 }
