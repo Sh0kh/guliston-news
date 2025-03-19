@@ -5,7 +5,6 @@ import Uz from "../AdminComponents/News/NewsLang/Uz"
 import Ru from "../AdminComponents/News/NewsLang/Ru"
 import Oz from "../AdminComponents/News/NewsLang/Kiril"
 import Swal from 'sweetalert2';
-import Input from "../UI/Inputs/Input"
 
 
 export default function AdminNewsCreate() {
@@ -15,7 +14,6 @@ export default function AdminNewsCreate() {
     const [loading, setLoading] = useState(false)
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState('')
-    const [mediaType, setMediaType] = useState(null)
     const [fileId, setFileId] = useState([])
 
 
@@ -55,8 +53,8 @@ export default function AdminNewsCreate() {
             formData.append("descriptionKIRIL", ozData.info);
             formData.append("titleRU", ruData.name);
             formData.append("descriptionRU", ruData.info);
-            formData.append("mediaType", mediaType);
             formData.append("contentURL", url);
+            formData.append("dataMediasId", fileId);
             formData.append("show", show);
             formData.append("contextUZ", uzData.context);
             formData.append("contextKIRIL", uzData.context);
@@ -70,9 +68,9 @@ export default function AdminNewsCreate() {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
             })
-            setMediaType('')
             setUrl('')
             setImage(null)
+            setFileId([])
             setShow(false)
             setRuData({
                 context: '',
@@ -146,18 +144,7 @@ export default function AdminNewsCreate() {
                     <span className="text-[black] block text-[13px] cursor-pointer">
                         Media type
                     </span>
-                    <select
-                        value={mediaType || ""}
-                        onChange={(e) => {
-                            setMediaType(e.target.value);
-                        }}
-                        className="py-[5px] w-full px-[10px] rounded-[5px] outline-MainColor border-[2px] border-black text-[black] bg-[white]"
-                    >
-                        <option value="" disabled>...</option>
-                        <option value="TEXT">So'z</option>
-                        <option value="MEDIA">Ijtimoiy tarmoq</option>
-                        <option value="YOUTUBE_URL">Yotube</option>
-                    </select>
+
                 </label>
                 <div className="w-full">
                     <input

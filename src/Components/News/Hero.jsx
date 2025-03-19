@@ -25,7 +25,7 @@ export default function Hero() {
   const getNews = async (currentPage) => {
     try {
       const response = await axios.get(`/article/admin/findAll`, {
-        params: { page: currentPage, size: 1 },
+        params: { page: currentPage, size: 10 },
       });
 
       const newData = response.data?.object?.content || [];

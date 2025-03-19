@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import FroalaEditorComponent from "react-froala-wysiwyg";
 
+// Подключаем плагины Froala
 import "froala-editor/js/plugins/align.min.js";
 import "froala-editor/js/plugins/char_counter.min.js";
 import "froala-editor/js/plugins/code_beautifier.min.js";
@@ -32,7 +32,7 @@ import "froala-editor/js/plugins/url.min.js";
 import "froala-editor/js/plugins/video.min.js";
 import "froala-editor/js/plugins/word_paste.min.js";
 
-// Подключаем стили
+// Подключаем стили Froala
 import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
 import "froala-editor/css/plugins/image.min.css";
@@ -40,13 +40,13 @@ import "froala-editor/css/plugins/table.min.css";
 import "froala-editor/css/plugins/colors.min.css";
 import "froala-editor/css/plugins/code_view.min.css";
 import "froala-editor/css/plugins/video.min.css";
-import axios from "axios";
+import "froala-editor/css/plugins/file.min.css";
 
+import axios from "axios";
 
 // Компонент модального окна загрузки
 const LoadingModal = ({ isOpen }) => {
     if (!isOpen) return null;
-
     return (
         <div style={{
             position: 'fixed',
@@ -93,19 +93,16 @@ const LoadingModal = ({ isOpen }) => {
 export default function RichBox({ value, onChange, FileArr }) {
     const [isLoading, setIsLoading] = useState(false);
 
-
+    // Обработчик загрузки изображений
     const handleImageUpload = (files) => {
         return new Promise((resolve, reject) => {
             if (!files.length) {
                 reject('No files selected');
                 return;
             }
-
-            // Показываем модальное окно загрузки
             setIsLoading(true);
             const formData = new FormData();
             formData.append('file', files[0]);
-
             axios.post('/data/media/upload', formData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -113,25 +110,54 @@ export default function RichBox({ value, onChange, FileArr }) {
                 }
             })
                 .then(response => {
-                    // Скрываем модальное окно загрузки
-
                     setIsLoading(false);
-
                     if (response.data) {
                         const newFileId = response?.data?.object?.id;
-                        console.log(newFileId)
                         resolve(response?.data?.object?.mediaUrl);
-                        console.log(response?.data?.object?.mediaUrl);
-
-                        FileArr(prev => [...prev, newFileId])
+                        FileArr(prev => [...prev, newFileId]);
                     } else {
                         reject('Invalid response from server');
                     }
                 })
                 .catch(error => {
-                    // Скрываем модальное окно загрузки в случае ошибки
                     setIsLoading(false);
                     console.error('Error uploading image:', error);
+                    reject(error);
+                });
+        });
+    };
+
+    // Обработчик загрузки файлов
+    const handleFileUpload = (files) => {
+        return new Promise((resolve, reject) => {
+            if (!files.length) {
+                reject('No files selected');
+                return;
+            }
+            const fileName = files[0].name; // Извлекаем имя файла
+            setIsLoading(true);
+            const formData = new FormData();
+            formData.append('file', files[0]);
+            axios.post('/data/media/upload', formData, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    setIsLoading(false);
+                    if (response.data) {
+                        const newFileId = response?.data?.object?.id;
+                        const filePath = response?.data?.object?.mediaUrl;
+                        resolve({ filePath, fileName }); // Возвращаем путь и имя файла
+                        FileArr(prev => [...prev, newFileId]);
+                    } else {
+                        reject('Invalid response from server');
+                    }
+                })
+                .catch(error => {
+                    setIsLoading(false);
+                    console.error('Error uploading file:', error);
                     reject(error);
                 });
         });
@@ -142,6 +168,7 @@ export default function RichBox({ value, onChange, FileArr }) {
             {/* Модальное окно загрузки */}
             <LoadingModal isOpen={isLoading} />
 
+            {/* Froala Editor */}
             <FroalaEditorComponent
                 tag="textarea"
                 model={value}
@@ -156,8 +183,8 @@ export default function RichBox({ value, onChange, FileArr }) {
                         "bold", "italic", "underline", "strikeThrough", "|",
                         "fontFamily", "fontSize", "color", "|",
                         "formatOL", "formatUL", "align", "|",
-                        "insertTable", "insertImage", "insertVideo", "insertLink", "|",
-                        "quote", "insertFile", "emoticons", "|",
+                        "insertTable", "insertImage", "insertVideo", "insertLink", "insertFile", "|",
+                        "quote", "emoticons", "|",
                         "codeView", "fullscreen"
                     ],
                     pluginsEnabled: [
@@ -168,49 +195,63 @@ export default function RichBox({ value, onChange, FileArr }) {
                         "quickInsert", "quote", "save", "specialCharacters", "table",
                         "url", "video", "wordPaste"
                     ],
-                    // Изменяем настройки загрузки изображений
+                    // Настройки загрузки изображений
                     imageUpload: true,
                     imageUploadMethod: 'POST',
                     imageUploadParam: 'image',
-                    imageUploadURL: null, // Отключаем встроенную отправку Froala
-                    imageUploadParams: {}, // Дополнительные параметры для запроса
+                    imageUploadURL: null,
                     imageAllowedTypes: ["jpeg", "jpg", "png", "gif", "webp"],
+                    imageDefaultWidth: 300,
+                    imagePaste: true,
 
-                
-                    // Используем события для перехвата загрузки
+                    // Настройки загрузки файлов
+                    fileUpload: true,
+                    fileUploadMethod: 'POST',
+                    fileUploadParam: 'file',
+                    fileUploadURL: null,
+                    fileAllowedTypes: ['*'],
+
+                    // События
                     events: {
                         'save.before': function () {
-                            // Сохранение контента
                             const editorContent = this.html.get();
-                            // Здесь логика сохранения контента на сервер
                             return false; // Предотвращаем действие по умолчанию
                         },
                         'image.beforeUpload': function (images) {
-                            // Останавливаем стандартную загрузку
                             const editor = this;
-
                             handleImageUpload(images)
                                 .then(imagePath => {
-                                    // Вставляем изображение по полученному пути
                                     editor.image.insert(imagePath, null, null, editor.image.get());
                                 })
                                 .catch(error => {
                                     console.error('Failed to upload image:', error);
-                                    // Показываем сообщение об ошибке
                                     editor.popups.get('image.insert').find('.fr-error-message').text('Image upload failed');
                                     editor.popups.get('image.insert').find('.fr-error-message').show();
                                 });
-
-                            // Возвращаем false, чтобы отменить стандартную загрузку
+                            return false;
+                        },
+                        'file.beforeUpload': function (files) {
+                            const editor = this;
+                            handleFileUpload(files)
+                                .then(({ filePath, fileName }) => {
+                                    editor.file.insert(filePath, fileName, null); // Вставляем файл с именем
+                                })
+                                .catch(error => {
+                                    console.error('Failed to upload file:', error);
+                                    editor.popups.get('file.insert').find('.fr-error-message').text('File upload failed');
+                                    editor.popups.get('file.insert').find('.fr-error-message').show();
+                                });
                             return false;
                         },
                         'image.error': function (error, response) {
                             console.error('Froala Editor image error:', error, response);
+                        },
+                        'file.error': function (error, response) {
+                            console.error('Froala Editor file error:', error, response);
                         }
                     },
 
-                    imageDefaultWidth: 300,
-                    imagePaste: true,
+                    // Другие настройки
                     videoUpload: true,
                     videoAllowedTypes: ["mp4", "webm", "ogg"],
                     tableResizer: true,

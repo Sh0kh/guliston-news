@@ -1,3 +1,20 @@
 /* a[href*="froala.com/wysiwyg-editor"] {
     display: none !important;
 } */
+
+.fr-file-green {
+    color: green;
+}
+
+.fr-file-blue {
+    color: blue;
+}
+
+.fr-file-red {
+    color: red;
+}
+
+.fr-file-custom {
+    color: purple;
+    font-weight: bold;
+}
