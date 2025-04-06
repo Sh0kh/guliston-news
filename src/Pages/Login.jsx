@@ -17,18 +17,33 @@ const Login = () => {
           password: password
         }
       })
-      localStorage.setItem('token', response.data.token);      
-      navigate('/admin/dashboard')
-      Swal.fire({
-        title: 'Muvaffaqiyatli!',
-        icon: 'success',
-        position: 'top-end',
-        timer: 3000,
-        timerProgressBar: true,
-        showCloseButton: true,
-        toast: true,
-        showConfirmButton: false,
-      });
+      localStorage.setItem('token', response.data.token);
+      if (response?.data?.code === 200) {
+        navigate('/admin/dashboard')
+        Swal.fire({
+          title: 'Muvaffaqiyatli!',
+          icon: 'success',
+          position: 'top-end',
+          timer: 3000,
+          timerProgressBar: true,
+          showCloseButton: true,
+          toast: true,
+          showConfirmButton: false,
+        });
+      } else if (response?.data?.code === 404) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Login yoki parol xato!',
+          icon: 'error',
+          position: 'top-end',
+          timer: 3000,
+          timerProgressBar: true,
+          showCloseButton: true,
+          toast: true,
+          showConfirmButton: false,
+        });
+      }
+
     } catch (error) {
       Swal.fire({
         title: 'Error!',

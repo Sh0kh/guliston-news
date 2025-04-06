@@ -1,47 +1,5 @@
-import React, { useState } from "react";
-import FroalaEditorComponent from "react-froala-wysiwyg";
-
-// Подключаем плагины Froala
-import "froala-editor/js/plugins/align.min.js";
-import "froala-editor/js/plugins/char_counter.min.js";
-import "froala-editor/js/plugins/code_beautifier.min.js";
-import "froala-editor/js/plugins/code_view.min.js";
-import "froala-editor/js/plugins/colors.min.js";
-import "froala-editor/js/plugins/draggable.min.js";
-import "froala-editor/js/plugins/emoticons.min.js";
-import "froala-editor/js/plugins/entities.min.js";
-import "froala-editor/js/plugins/file.min.js";
-import "froala-editor/js/plugins/font_family.min.js";
-import "froala-editor/js/plugins/font_size.min.js";
-import "froala-editor/js/plugins/fullscreen.min.js";
-import "froala-editor/js/plugins/image.min.js";
-import "froala-editor/js/plugins/image_manager.min.js";
-import "froala-editor/js/plugins/inline_class.min.js";
-import "froala-editor/js/plugins/inline_style.min.js";
-import "froala-editor/js/plugins/line_breaker.min.js";
-import "froala-editor/js/plugins/link.min.js";
-import "froala-editor/js/plugins/lists.min.js";
-import "froala-editor/js/plugins/paragraph_format.min.js";
-import "froala-editor/js/plugins/paragraph_style.min.js";
-import "froala-editor/js/plugins/quick_insert.min.js";
-import "froala-editor/js/plugins/quote.min.js";
-import "froala-editor/js/plugins/save.min.js";
-import "froala-editor/js/plugins/special_characters.min.js";
-import "froala-editor/js/plugins/table.min.js";
-import "froala-editor/js/plugins/url.min.js";
-import "froala-editor/js/plugins/video.min.js";
-import "froala-editor/js/plugins/word_paste.min.js";
-
-// Подключаем стили Froala
-import "froala-editor/css/froala_style.min.css";
-import "froala-editor/css/froala_editor.pkgd.min.css";
-import "froala-editor/css/plugins/image.min.css";
-import "froala-editor/css/plugins/table.min.css";
-import "froala-editor/css/plugins/colors.min.css";
-import "froala-editor/css/plugins/code_view.min.css";
-import "froala-editor/css/plugins/video.min.css";
-import "froala-editor/css/plugins/file.min.css";
-
+import React, { useState, useRef } from "react";
+import { Editor } from '@tinymce/tinymce-react';
 import axios from "axios";
 
 // Компонент модального окна загрузки
@@ -92,29 +50,30 @@ const LoadingModal = ({ isOpen }) => {
 
 export default function RichBox({ value, onChange, FileArr }) {
     const [isLoading, setIsLoading] = useState(false);
+    const editorRef = useRef(null);
 
     // Обработчик загрузки изображений
-    const handleImageUpload = (files) => {
+    const handleImageUpload = (blobInfo, progress) => {
         return new Promise((resolve, reject) => {
-            if (!files.length) {
-                reject('No files selected');
-                return;
-            }
             setIsLoading(true);
             const formData = new FormData();
-            formData.append('file', files[0]);
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
             axios.post('/data/media/upload', formData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'multipart/form-data'
+                },
+                onUploadProgress: (e) => {
+                    progress(e.loaded / e.total * 100);
                 }
             })
                 .then(response => {
                     setIsLoading(false);
                     if (response.data) {
                         const newFileId = response?.data?.object?.id;
-                        resolve(response?.data?.object?.mediaUrl);
                         FileArr(prev => [...prev, newFileId]);
+                        resolve(response?.data?.object?.mediaUrl);
                     } else {
                         reject('Invalid response from server');
                     }
@@ -122,22 +81,29 @@ export default function RichBox({ value, onChange, FileArr }) {
                 .catch(error => {
                     setIsLoading(false);
                     console.error('Error uploading image:', error);
-                    reject(error);
+                    reject({ message: 'Error uploading image', remove: true });
                 });
         });
     };
 
-    // Обработчик загрузки файлов
-    const handleFileUpload = (files) => {
-        return new Promise((resolve, reject) => {
-            if (!files.length) {
-                reject('No files selected');
+    // Обработчик загрузки файлов через TinyMCE
+    const handleFileUpload = (callback, value, meta) => {
+        // Создаем скрытый input элемент для выбора файла
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', '*/*');
+
+        input.onchange = function () {
+            const file = this.files[0];
+            if (!file) {
+                callback('', { title: '' });
                 return;
             }
-            const fileName = files[0].name; // Извлекаем имя файла
+
             setIsLoading(true);
             const formData = new FormData();
-            formData.append('file', files[0]);
+            formData.append('file', file);
+
             axios.post('/data/media/upload', formData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -149,18 +115,20 @@ export default function RichBox({ value, onChange, FileArr }) {
                     if (response.data) {
                         const newFileId = response?.data?.object?.id;
                         const filePath = response?.data?.object?.mediaUrl;
-                        resolve({ filePath, fileName }); // Возвращаем путь и имя файла
                         FileArr(prev => [...prev, newFileId]);
+                        callback(filePath, { title: file.name });
                     } else {
-                        reject('Invalid response from server');
+                        callback('', { title: 'Error: Invalid response from server' });
                     }
                 })
                 .catch(error => {
                     setIsLoading(false);
                     console.error('Error uploading file:', error);
-                    reject(error);
+                    callback('', { title: 'Error: File upload failed' });
                 });
-        });
+        };
+
+        input.click();
     };
 
     return (
@@ -168,131 +136,103 @@ export default function RichBox({ value, onChange, FileArr }) {
             {/* Модальное окно загрузки */}
             <LoadingModal isOpen={isLoading} />
 
-            {/* Froala Editor */}
-            <FroalaEditorComponent
-                tag="textarea"
-                model={value}
-                onModelChange={onChange}
-                config={{
-                    placeholderText: "Начни писать...",
+            {/* Стили для выравнивания текста */}
+            <style jsx global>{`
+                .text-left {
+                    text-align: left !important;
+                }
+                .text-center {
+                    text-align: center !important;
+                }
+                .text-right {
+                    text-align: right !important;
+                }
+                .text-justify {
+                    text-align: justify !important;
+                }
+            `}</style>
+
+            {/* TinyMCE Editor */}
+            <Editor
+                apiKey="swbxllpubas9mkbcofu5g23turhtv6yx2bq0ajg10w5d1gol"
+                onInit={(evt, editor) => editorRef.current = editor}
+                value={value}
+                onEditorChange={onChange}
+                init={{
                     height: 400,
-                    theme: "gray",
-                    toolbarSticky: true,
-                    toolbarButtons: [
-                        "undo", "redo", "|",
-                        "bold", "italic", "underline", "strikeThrough", "|",
-                        "fontFamily", "fontSize", "color", "|",
-                        "formatOL", "formatUL", "align", "|",
-                        "insertTable", "insertImage", "insertVideo", "insertLink", "insertFile", "|",
-                        "quote", "emoticons", "|",
-                        "codeView", "fullscreen"
+                    placeholder: "Начни писать...",
+                    menubar: false,
+                    plugins: [
+                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                        'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount',
+                        'emoticons', 'save', 'autosave'
                     ],
-                    pluginsEnabled: [
-                        "align", "charCounter", "codeBeautifier", "codeView", "colors",
-                        "draggable", "emoticons", "entities", "file", "fontFamily", "fontSize",
-                        "fullscreen", "image", "imageManager", "inlineClass", "inlineStyle",
-                        "lineBreaker", "link", "lists", "paragraphFormat", "paragraphStyle",
-                        "quickInsert", "quote", "save", "specialCharacters", "table",
-                        "url", "video", "wordPaste"
-                    ],
-                    // Настройки загрузки изображений
-                    imageUpload: true,
-                    imageUploadMethod: 'POST',
-                    imageUploadParam: 'image',
-                    imageUploadURL: null,
-                    imageAllowedTypes: ["jpeg", "jpg", "png", "gif", "webp"],
-                    imageDefaultWidth: 300,
-                    imagePaste: true,
+                    toolbar: 'undo redo | ' +
+                        'bold italic underline strikethrough | ' +
+                        'fontfamily fontsize forecolor backcolor | ' +
+                        'alignleft aligncenter alignright alignjustify | ' +
+                        'numlist bullist | ' +
+                        'table image media link file | ' +
+                        'emoticons blockquote | ' +
+                        'code fullscreen',
 
-                    // Настройки загрузки файлов
-                    fileUpload: true,
-                    fileUploadMethod: 'POST',
-                    fileUploadParam: 'file',
-                    fileUploadURL: null,
-                    fileAllowedTypes: ['*'],
+                    // Настройки изображений
+                    image_advtab: true,
+                    automatic_uploads: true,
+                    images_upload_handler: handleImageUpload,
+                    images_reuse_filename: true,
 
-                    // События
-                    events: {
-                        'save.before': function () {
-                            const editorContent = this.html.get();
-                            return false; // Предотвращаем действие по умолчанию
-                        },
-                        'image.beforeUpload': function (images) {
-                            const editor = this;
-                            handleImageUpload(images)
-                                .then(imagePath => {
-                                    editor.image.insert(imagePath, null, null, editor.image.get());
-                                })
-                                .catch(error => {
-                                    console.error('Failed to upload image:', error);
-                                    editor.popups.get('image.insert').find('.fr-error-message').text('Image upload failed');
-                                    editor.popups.get('image.insert').find('.fr-error-message').show();
-                                });
-                            return false;
-                        },
-                        'file.beforeUpload': function (files) {
-                            const editor = this;
-                            handleFileUpload(files)
-                                .then(({ filePath, fileName }) => {
-                                    editor.file.insert(filePath, fileName, null); // Вставляем файл с именем
-                                })
-                                .catch(error => {
-                                    console.error('Failed to upload file:', error);
-                                    editor.popups.get('file.insert').find('.fr-error-message').text('File upload failed');
-                                    editor.popups.get('file.insert').find('.fr-error-message').show();
-                                });
-                            return false;
-                        },
-                        'image.error': function (error, response) {
-                            console.error('Froala Editor image error:', error, response);
-                        },
-                        'file.error': function (error, response) {
-                            console.error('Froala Editor file error:', error, response);
-                        }
+                    // Настройки для файлов
+                    file_picker_types: 'file',
+                    file_picker_callback: handleFileUpload,
+
+                    // Настройки таблиц
+                    table_default_attributes: {
+                        border: 1
                     },
+                    table_default_styles: {
+                        'border-collapse': 'collapse',
+                        'width': '100%'
+                    },
+                    table_responsive_width: true,
+
+                    // Настройки форматирования с исправленными классами выравнивания
+                    formats: {
+                        alignleft: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'text-left' },
+                        aligncenter: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'text-center' },
+                        alignright: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'text-right' },
+                        alignjustify: { selector: 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table', classes: 'text-justify' }
+                    },
+
+                    // Добавляем стили для предпросмотра в редакторе
+                    content_style: `
+                        body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+                        .text-left { text-align: left !important; }
+                        .text-center { text-align: center !important; }
+                        .text-right { text-align: right !important; }
+                        .text-justify { text-align: justify !important; }
+                    `,
+
+                    // Настройки шрифтов
+                    fontsize_formats: '8pt 10pt 12pt 14pt 16pt 18pt 20pt 24pt 30pt 36pt',
+                    font_family_formats: 'Arial=arial,helvetica,sans-serif; Georgia=georgia,serif; Impact=impact,charcoal,sans-serif; Tahoma=tahoma,geneva,sans-serif; "Times New Roman"=times new roman,times,serif; Verdana=verdana,geneva,sans-serif',
+
+                    // Настройки поведения
+                    paste_data_images: true,
+                    browser_spellcheck: true,
+                    contextmenu: 'link image table',
+
+                    // Автосохранение
+                    autosave_interval: '5s',
+                    autosave_retention: '20m',
 
                     // Другие настройки
-                    videoUpload: true,
-                    videoAllowedTypes: ["mp4", "webm", "ogg"],
-                    tableResizer: true,
-                    tableStyles: {
-                        "fr-dashed-borders": "Dashed Borders",
-                        "fr-alternate-rows": "Alternate Rows"
-                    },
-                    paragraphFormat: {
-                        N: "Normal",
-                        H1: "Heading 1",
-                        H2: "Heading 2",
-                        H3: "Heading 3",
-                        H4: "Heading 4",
-                        BLOCKQUOTE: "Quote"
-                    },
-                    fontFamily: {
-                        "Arial,Helvetica,sans-serif": "Arial",
-                        "Georgia,serif": "Georgia",
-                        "Impact,Charcoal,sans-serif": "Impact",
-                        "Tahoma,Geneva,sans-serif": "Tahoma",
-                        "'Times New Roman',Times,serif": "Times New Roman",
-                        "Verdana,Geneva,sans-serif": "Verdana"
-                    },
-                    fontSize: ["8", "10", "12", "14", "16", "18", "20", "24", "30", "36"],
-                    colorsBackground: [
-                        "#000000", "#333333", "#666666", "#999999", "#BBBBBB", "#DDDDDD", "#FFFFFF",
-                        "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"
-                    ],
-                    colorsText: [
-                        "#000000", "#333333", "#666666", "#999999", "#BBBBBB", "#DDDDDD", "#FFFFFF",
-                        "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#00FFFF", "#FF00FF"
-                    ],
-                    shortcutsEnabled: ["bold", "italic", "underline", "strikeThrough", "insertTable", "insertLink"],
-                    saveInterval: 5000, // Автосохранение каждые 5 секунд
-                    codeBeautifierOptions: {
-                        end_with_newline: true,
-                        indent_inner_html: true,
-                        indent_size: 2,
-                        indent_char: " ",
-                        wrap_line_length: 0,
-                        extra_liners: []
+                    promotion: false,
+                    setup: function (editor) {
+                        editor.on('change', function () {
+                            editor.save();
+                        });
                     }
                 }}
             />

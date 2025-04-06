@@ -159,29 +159,6 @@ export default function AdminNewsEdit() {
             </div>
             {lang === 'Uzb' ? <Uz value={uzData} onChange={setUzData} /> : lang === 'Russ' ? <Ru value={ruData} onChange={setRuData} /> : lang === 'Kiril' ? <Oz value={ozData} onChange={setOzData} /> : ''}
             <div className="bg-white mt-[10px] p-[10px] shadow-lg rounded-[10px]">
-                <label className="w-full block mb-[10px]">
-                    <span className="text-[black] block text-[13px] cursor-pointer">
-                        Media type
-                    </span>
-                    <select
-                        value={mediaType || ""}
-                        onChange={(e) => {
-                            setMediaType(e.target.value);
-                        }}
-                        className="py-[5px] w-full px-[10px] rounded-[5px] outline-MainColor border-[2px] border-black text-[black] bg-[white]"
-                    >
-                        <option value="" disabled>...</option>
-                        <option value="TEXT">So'z</option>
-                        <option value="MEDIA">Ijtimoiy tarmoq</option>
-                        <option value="YOUTUBE_URL">Yotube</option>
-                    </select>
-                </label>
-                <div className="mb-[10px]">
-                    <Input
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                        inputText={"Havola"} placeholder={"...."} />
-                </div>
                 <div className="w-full">
                     <input
                         type="file"

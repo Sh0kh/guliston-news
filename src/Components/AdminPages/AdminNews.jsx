@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import NewsCreate from "../AdminComponents/News/NewsCreate";
 import axios from "axios";
 import ReactLoading from 'react-loading';
 import NewsEdit from "../AdminComponents/News/NewsEdit";
@@ -80,7 +79,6 @@ export default function AdminNews() {
                                 <th className="p-3">Foto</th>
                                 <th className="p-3">Title</th>
                                 <th className="p-3">Info</th>
-                                <th className="p-3">Url</th>
                                 <th className="p-3">Type</th>
                                 <th className="p-3">Action</th>
                             </tr>
@@ -94,9 +92,7 @@ export default function AdminNews() {
                                     </td>
                                     <td className="p-3 truncate max-w-[150px]">{news.title}</td>
                                     <td className="p-3 truncate max-w-[150px]">{news.description}</td>
-                                    <td className="p-3">
-                                        <a href={news.url} className="text-MainColor hover:underline">Link</a>
-                                    </td >
+
                                     <td className="p-3">{news.mediaType === "MEDIA" ? 'Ijtimoiy tarmoq' : news?.mediaType === 'YOUTUBE_URL' ? "Youtube" : news?.mediaType === 'TEXT' ? "Matnli" : 'Boshqa'}</td>
                                     <td className="p-3">
                                         <div className="flex items-center gap-[5px]">
@@ -155,9 +151,7 @@ export default function AdminNews() {
                 </div>
             </div>
             <NewsDelete refresh={() => fetchData(currentPage)} isOpen={deleteModal} onClose={() => setDeleteModal(false)} data={Id} />
-            <NewsCreate refresh={() => fetchData(currentPage)} isOpen={createModal} onClose={() => setCreateModal(false)} />
             <NewsEdit refresh={() => fetchData(currentPage)} isOpen={editModal} onClose={() => setEditModal(false)} data={Id} />
-
         </>
     );
 }

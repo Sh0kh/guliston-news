@@ -71,8 +71,8 @@ export default function Percent({ NewsData }) {
                             >
                                 <div className="bg-[white] cursor-pointer border-b-MainColor border-b-[5px] p-[15px] rounded-[10px] flex flex-col justify-between min-h-[130px] max-h-[130px]">
                                     <h3 className="font-bold">
-                                        {i?.title?.split(' ').length > 8
-                                            ? i?.title?.split(' ').slice(0, 8).join(' ') + '...'
+                                        {i?.title?.split(' ').length > 5
+                                            ? i?.title?.split(' ').slice(0, 5).join(' ') + '...'
                                             : i?.title}
                                     </h3>
                                     <div className="flex items-center justify-between mt-[20px]">
