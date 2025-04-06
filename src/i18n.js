@@ -16,7 +16,7 @@ if (!savedLang) {
 }
 
 const resources = {
-    en: { translation: oz },
+    oz: { translation: oz },
     ru: { translation: ru },
     uz: { translation: uz },
 };
@@ -26,7 +26,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: savedLang || defaultLang, // Устанавливаем язык при старте
+        lng: savedLang || defaultLang, 
         fallbackLng: defaultLang,
         interpolation: { escapeValue: false },
         detection: {
