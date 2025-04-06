@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function OpenData() {
-        const { t } = useTranslation();
+    const { t } = useTranslation();
     useGSAP(() => {
         gsap.fromTo('.Koruption',
             { opacity: 0, y: 100, zIndex: 1 },
@@ -44,12 +44,12 @@ export default function OpenData() {
         <div className="Koruption mt-[30px] pb-[30px]">
             <div className="Container">
                 <h1 className="News__Hero__title border-l-MainColor mb-[30px] border-l-[3px] pl-[10px] text-[28px] font-bold text-[#1F1F1F]">
-                {t("Open-info")}
+                    {t("Open-info")}
                 </h1>
                 {data?.length > 0 ? (
-                    <div className="bg-white p-4 shadow-md rounded-lg mb-4">
-                        <ul className="ml-4">
-                            {data.map((item, index) => (
+                    data.map((item, index) => (
+                        <div className="bg-white p-4 shadow-md rounded-lg mb-4">
+                            <ul className="ml-4">
                                 <li key={index} className="text-gray-700 flex justify-between items-center">
                                     <span>{item?.title}</span>
                                     <a className="text-[30px] hover:text-MainColor duration-300" href={item?.mediaUrl} download target="_blank" rel="noopener noreferrer">
@@ -58,9 +58,9 @@ export default function OpenData() {
                                         </svg>
                                     </a>
                                 </li>
-                            ))}
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
+                    ))
                 ) : (
                     <div className="flex flex-col items-center text-center py-10">
                         <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
