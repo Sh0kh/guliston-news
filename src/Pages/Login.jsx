@@ -19,7 +19,7 @@ const Login = () => {
       })
       localStorage.setItem('token', response.data.token);
       if (response?.data?.code === 200) {
-        navigate('/admin/dashboard')
+        navigate('/admin/news')
         Swal.fire({
           title: 'Muvaffaqiyatli!',
           icon: 'success',

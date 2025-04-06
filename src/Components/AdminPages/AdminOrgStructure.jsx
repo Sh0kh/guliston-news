@@ -6,6 +6,7 @@ import RekvizitsDelete from "../AdminComponents/Rekvizit/RekvizitsDelete";
 import RekvizitsEdit from "../AdminComponents/Rekvizit/RekvizitsEdit";
 import OrgStructureCreate from "../AdminComponents/OrgStructure.jsx/OrgStructureCreate";
 import OrgStructureEdit from "../AdminComponents/OrgStructure.jsx/OrgStructureEdit";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminOrgStructure() {
     const [createModal, setCreateModal] = useState(false);
@@ -14,6 +15,7 @@ export default function AdminOrgStructure() {
     const [editModal, setEditModal] = useState(false)
     const [loading, setLoading] = useState(true);
     const [editData, setEditData] = useState(null)
+    const navigate = useNavigate()
 
     const fetchData = async () => {
         setLoading(true);
@@ -26,6 +28,10 @@ export default function AdminOrgStructure() {
             setData(response?.data?.object);
         } catch (error) {
             console.log(error);
+            if (error?.status === 401) {
+                navigate('/login')
+                localStorage.clear()
+            }
         } finally {
             setLoading(false);
         }

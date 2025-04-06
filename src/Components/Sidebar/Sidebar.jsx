@@ -9,7 +9,7 @@ export default function Sidebar() {
                 <img className="rounded-[10px]" src={foto} alt="" />
             </div>
             <div className="mt-[30px]">
-                <NavLink to={'/admin/dashboard'}>
+                {/* <NavLink to={'/admin/dashboard'}>
                     <button className="group w-full shadow-md duration-500 hover:shadow-xl scale-95 hover:scale-100 flex items-center gap-[10px] border-[2px] rounded-[10px] border-[#E5EFF9] p-[5px] hover:border-[#E6F0F9] hover:bg-[#F0F8FF]">
                         <svg
 
@@ -19,7 +19,7 @@ export default function Sidebar() {
                             Bosh sahifa
                         </span>
                     </button>
-                </NavLink>
+                </NavLink> */}
                 <NavLink to={'/admin/menu'}>
                     <button className="group w-full shadow-md mt-[10px] duration-500 hover:shadow-xl scale-95 hover:scale-100 flex items-center gap-[10px] border-[2px] rounded-[10px] border-[#E5EFF9] p-[5px] hover:border-[#E6F0F9] hover:bg-[#F0F8FF]">
                         <svg

@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ReactLoading from 'react-loading';
 
-import OpenDataCreate from "../AdminComponents/OpenData/OpenDataCreate";
-import OpenDataUpdate from "../AdminComponents/OpenData/OpenDataUpdate";
 import OpenDataDelete from "../AdminComponents/OpenData/OpenDataDelete";
 import KoruptionCreate from "../AdminComponents/Koruption/KoruptionCreate";
 import KoruptionEdit from "../AdminComponents/Koruption/KoruptionEdit";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminKoruption() {
     const [createModal, setCreateModal] = useState(false);
@@ -15,6 +14,7 @@ export default function AdminKoruption() {
     const [data, setData] = useState([]);
     const [deleteModal, setDeleteModal] = useState(false)
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate()
 
     const fetchData = async () => {
         setLoading(true);
@@ -27,6 +27,10 @@ export default function AdminKoruption() {
             setData(response?.data?.object);
         } catch (error) {
             console.log(error);
+            if(error?.status === 401){
+                navigate('/login')
+                localStorage.clear()
+            }
         } finally {
             setLoading(false);
         }

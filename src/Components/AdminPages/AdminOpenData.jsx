@@ -4,6 +4,7 @@ import ReactLoading from 'react-loading';
 import OpenDataCreate from "../AdminComponents/OpenData/OpenDataCreate";
 import OpenDataUpdate from "../AdminComponents/OpenData/OpenDataUpdate";
 import OpenDataDelete from "../AdminComponents/OpenData/OpenDataDelete";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminOpenData() {
     const [createModal, setCreateModal] = useState(false);
@@ -12,7 +13,7 @@ export default function AdminOpenData() {
     const [data, setData] = useState([]);
     const [deleteModal, setDeleteModal] = useState(false)
     const [loading, setLoading] = useState(true);
-
+    const navigate = useNavigate()
     const fetchData = async () => {
         setLoading(true);
         try {
@@ -24,6 +25,10 @@ export default function AdminOpenData() {
             setData(response?.data?.object);
         } catch (error) {
             console.log(error);
+            if (error?.status === 401) {
+                navigate('/login')
+                localStorage.clear()
+            }
         } finally {
             setLoading(false);
         }

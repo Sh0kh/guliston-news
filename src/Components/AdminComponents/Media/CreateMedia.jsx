@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Input from "../../UI/Inputs/Input";
 import Swal from 'sweetalert2';
 import axios from "axios";
 import NormalModal from "../../UI/Modals/NormalModal";
@@ -87,13 +86,13 @@ export default function CreateMedia({ isOpen, onClose, refresh }) {
                 <div className="mt-[10px]">
                     <div className="flex items-center justify-between gap-[10px] w-full">
                     </div>
-                    <div className="flex items-center justify-between gap-[10px] mt-[10px] w-full">
+                    {/* <div className="flex items-center justify-between gap-[10px] mt-[10px] w-full">
                         <Input
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                             inputText={"Havola"} placeholder={"...."} />
-                    </div>
-                    <div className="flex items-end justify-between gap-[10px] my-[10px] w-full">
+                    </div> */}
+                    <div className="flex items-end justify-between flex-col gap-[10px] my-[10px] w-full">
                         <label className="w-full">
                             <span className="text-[black] block text-[13px] cursor-pointer">
                                 Media type
