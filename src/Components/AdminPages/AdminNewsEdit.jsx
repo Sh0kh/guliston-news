@@ -92,8 +92,8 @@ export default function AdminNewsEdit() {
             formData.append("contentURL", url);
             formData.append("show", show);
             formData.append("contextUZ", uzData.context);
-            formData.append("contextKIRIL", uzData.context);
-            formData.append("contextRU", uzData.context);
+            formData.append("contextKIRIL", ozData.context);
+            formData.append("contextRU", ruData.context);
             if (image) {
                 formData.append("file", image);
             }
